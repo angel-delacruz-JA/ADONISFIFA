@@ -4,10 +4,7 @@ import {Schema,model} from 'mongoose'
 export default class PartidoModelo {
   
   static partidoschema=new Schema({
-    id_partido:String,
-    local:Number,
-    visitante:Number,
-    Estadio:Number,
+    id_partido:Number,
     comentario:Array
   },{
     versionKey:false
