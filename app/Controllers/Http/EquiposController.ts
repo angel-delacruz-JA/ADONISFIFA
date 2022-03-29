@@ -76,6 +76,31 @@ export default class EquiposController
             return response.badRequest('ERROR')
         }
     }
+    public async DatosEquipoMod({auth,params,response})
+    {
+        try
+        {
+            await auth.use('api').authenticate()
+            const Equipos=
+            Database.query()
+            .from('equipo_ligas')
+            .join('equipos','equipo_ligas.Equipo','=','equipos.id')
+            .join('ligas','equipo_ligas.Liga','=','ligas.id')
+            .select('equipos.id')
+            .select('equipos.Nombre_Equipo as Equipo')
+            .select('equipos.Presidente_Equipo as Presidente')
+            .select('ligas.Nombre_Liga as Liga')
+            .join('estadios','equipos.Estadio','=','estadios.id')
+            .select('estadios.Nombre_Estadio as Estadio')
+            .join('dt','equipos.DT_Equipo','=','dt.id')
+            .select('dt.Nombre_DT as Director_Tecnico')
+            .where('equipos.id','=',params.id)
+            return Equipos
+        }catch
+        {
+            return response.badRequest('Algo salio mal')
+        }
+    }
     public async DatosEquipo({auth,response})
     {
         try
@@ -97,8 +122,7 @@ export default class EquiposController
             return Equipos
         }catch
         {
-            const mensaje="Bla, bla, bla, bla, bla, bla Ey, yo, yo-yo, yo-yo, yo-yo Yo, (la-la-la-la-la-la-la) blow, blow (la-la-la-la-la-la-la) Diablo, qué safaera Tú tiene un culo cabrón Cualquier cosa que te pongas rompes la carretera (la-la-la-la-la)Aight, muévelo, muévelo, muévelo, muévelo (la-la-la-la-la-la-la) Qué safaera (la-la-la-la-la) Tú tiene un culo cabrón Cualquier cosa que te pongas rompes la carretera Aight, (tra) muévelo, muévelo, muévelo, muévelo Qué falta de respeto, mami ¿Cómo te atreve a venir sin panty? Hoy saliste puesta pa mí Yo que pensaba que venía a dormir, no Vino ready ya, puesta pa una cepillá Me chupa la lollipop, solita se arrodilla, hey ¿Cómo te atreve, mami, a venir sin panty? Mera, dímelo, DJ Orma¿Qué tú te cree? Jodío cabrónYo hago lo que me da la gana, dícelo conejo Ey, ey Hoy se bebe, hoy se gasta Hoy se fuma como un rasta Si Dios lo permite (si Dios lo permite), ey Si Dios lo permite (que si Dios lo permite), ey Hoy se bebe, hoy se gasta Hoy se fuma como un rasta (wuh, wuh, wuh) Si Dios lo permite, ey Si Dios lo permite (yo, yo), ey Real G, orientando a la generaciones nueva, con la verdadera Bellaqueo a lo galactic Sí, pa que se te mojen los panty, métele bellaco a lo versátil Más puta que Betty Boop, la que se puso bellaca, mami, fuiste tú Sigo matando con la U Chocha con bicho, bicho con nalga (empuja) Cho-chocha con bicho, bicho con nalga, sí (empuja) Chocha con bicho, bicho con nalga (empuja) Te-te está rozando mi tetilla (empuja) Este año no quiero putilla (empuja) Te ven con mucha prenda y se quieren pegar (empuja) Te ven bien activao y se quieren pegar (empuja) Porque estás bien buena, porque estás bien buena (empújamelo completo) Tetas bien grande' como Lourdes Chacón Las nalga bien grande como Iris Chacón La chocha no sé porque no la he visto Pero vamo pa la cama a clavarte en panty Pero vamo' pa' la cama a clavarte en panty Hoy se bebe, hoy se gasta Hoy se fuma como un rasta Si Dios lo permite Si Dios lo permite, yeh-yeah Hoy se bebe, hoy se gasta Hoy se fuma como un rasta Si Dios lo permite Si Dios lo permite Mami ¿Qué tú quiere'? Aquí llegó tu tiburón Yo quiero perrearte y fumarme un blunt Ver lo que esconde ese pantalón Yo quiero perrearte y perrearte y perrearte (duro, duro) Yo-yo-yo-yo quiero perrearte y fumarme un blunt (duro, duro) Yo quiero perrearte y perrearte y perrear (duro, duro) Yo-yo-yo-yo quiero perrearte y fumarme un blunt, -me un blunt (duro, duro) La rola ya me explotó La nena bailando se botó Ese culo se merece to, se merece to, se merece to, yes Ese culo se merece to, se merece to, se merece to (ey, ey, ey, ey, ey) Ah, yo pensaba que se ponía lenta Tá bien, tá bien, vamo de nuevo, de nuevo Meren a Orma, meren a Orma que está bellaco Mi bicho anda fugao' y yo quiero que tú me lo esconda' Agárralo como bonga Se metió una pepa que la pone cachonda Chinga en lo Audi, no en lo Honda Ey, si te lo meto no me llame' Que esto no es pa que me ame, ey Si tu novio no te mama el culo Pa eso que no mame"
-            return mensaje
+            return response.badRequest('Algo salio mal')
         }
     }
     

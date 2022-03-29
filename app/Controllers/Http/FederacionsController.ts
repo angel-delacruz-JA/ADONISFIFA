@@ -1,4 +1,5 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from "@ioc:Adonis/Lucid/Database";
 import Federacion from "App/Models/Federacion";
 export default class FederacionsController 
 {
@@ -12,10 +13,10 @@ export default class FederacionsController
         try
         {
             await auth.use('api').authenticate()
-            user.Nombre=Nombre
-            user.Presidente=Presidente
-            user.Region=Region
-            user.Abreviatura=Abreviatura
+            user.Nombre_Federacion=Nombre
+            user.Presidente_Federacion=Presidente
+            user.Region_Federacion=Region
+            user.Abreviatura_Federacion=Abreviatura
             await user.save()
             return response.status(200)
         }catch
@@ -29,8 +30,14 @@ export default class FederacionsController
         {
             await auth.use('api').authenticate()
             console.log(auth.use('api').user!)
-            const user=await Federacion.all()
-            return user
+            const federacion=Database.query()
+            .from('federacion')
+            .select('federacion.id')
+            .select('federacion.Nombre_Federacion as Nombre')
+            .select('federacion.Region_Federacion as Region')
+            .select('federacion.Abreviatura_Federacion as Abreviatura')
+            .select('federacion.Presidente_Federacion as Presidente')
+            return federacion
         }catch
         {
             response.badRequest('No tienes permiso')
@@ -48,24 +55,23 @@ export default class FederacionsController
             await auth.use('api').authenticate()
             console.log(auth.use('api').user!)
             const federacion=await Federacion.findOrFail(id)
-            federacion.Nombre=Nombre
-            federacion.Region=Region
-            federacion.Abreviatura=Abreviatura
-            federacion.Presidente=Presidente
+            federacion.Nombre_Federacion=Nombre
+            federacion.Region_Federacion=Region
+            federacion.Abreviatura_Federacion=Abreviatura
+            federacion.Presidente_Federacion=Presidente
             await federacion.save()
         }catch
         {
             return response.badRequest('ERROR')
         }
     }
-    public async delete({auth,request,response})
+    public async delete({auth,params,response})
     {
-        const id=request.input('id')
         try
         {
             await auth.use('api').authenticate()
             console.log(auth.use('api').user!)
-            const federacion=await Federacion.findOrFail(id)
+            const federacion=await Federacion.findOrFail(params.id)
             await federacion.delete()
         }catch
         {

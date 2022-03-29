@@ -65,7 +65,7 @@ export default class MongosController
         await mongoose.connect('mongodb+srv://AngelVargas2003:Angel2003@basesdedatosenlanube.fsnez.mongodb.net/fifa?retryWrites=true&w=majority')
         response=await PartidoModelo.PartidoModelo.find({"id_partido":params.id})
         return response
-    }
+    } 
     public async delete({auth,response,params})
     {
         try

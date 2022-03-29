@@ -1,15 +1,14 @@
-import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 export default class Federacion extends BaseModel {
   public static table='federacion'
   @column({ isPrimary: true })
   public id: number
   @column()
-  public Presidente:string
+  public Presidente_Federacion:string
   @column()
-  public Nombre:string
+  public Nombre_Federacion:string
   @column()
-  public Region:string
+  public Region_Federacion:string
   @column()
-  public Abreviatura:string
+  public Abreviatura_Federacion:string
 }

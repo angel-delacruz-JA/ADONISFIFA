@@ -55,14 +55,13 @@ export default class EstadiosController
             return response.badRequest('ERROR')
         }
     }
-    public async delete({auth,request,response})
+    public async delete({auth,params,response})
     {
-        const id=request.input('id')
         try
         {
             await auth.use('api').authenticate()
             console.log(auth.use('api').user!)
-            const Estadios=await Estadio.findOrFail(id)
+            const Estadios=await Estadio.findOrFail(params.id)
             await Estadios.delete()
         }catch
         {
