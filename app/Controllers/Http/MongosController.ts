@@ -3,7 +3,7 @@ import Database from "@ioc:Adonis/Lucid/Database"
 import PartidoModelo from "App/Models/PartidoModelo"
 import Partido from "App/Models/Partido"
 import mongoose from "mongoose"
-export default class MongosController 
+export default class MongosController
 {
     public async guardarMongo({request,response})
     {
@@ -65,7 +65,7 @@ export default class MongosController
         await mongoose.connect('mongodb+srv://AngelVargas2003:Angel2003@basesdedatosenlanube.fsnez.mongodb.net/fifa?retryWrites=true&w=majority')
         response=await PartidoModelo.PartidoModelo.find({"id_partido":params.id})
         return response
-    } 
+    }
     public async delete({auth,response,params})
     {
         try

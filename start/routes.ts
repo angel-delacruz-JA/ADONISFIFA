@@ -40,7 +40,7 @@ Route.group(()=>{
     Route.get('/getJugadores','JugadoresController.JugadorEquipo')
     Route.post('/getJugadoresEQ/:request','JugadoresController.JugadoresEquipo')
     Route.get('/getLigas','LigasesController.ligasinfo')
-    Route.put('/updateEquipos/:request','EquiposController.update') 
+    Route.put('/updateEquipos/:request','EquiposController.update')
     Route.delete('/deleteEquipo/:id','EquiposController.delete')
     Route.post('/guardarPartido/:request','MongosController.insertar')
     Route.post('/arrancarPartido/:request','MongosController.guardarMongo')

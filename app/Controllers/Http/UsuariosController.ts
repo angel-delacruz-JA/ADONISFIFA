@@ -1,7 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from "App/Models/User";
 import authConfig from "Config/auth";
-export default class UsuariosController 
+export default class UsuariosController
 {
     public async store({auth,request,response})
     {

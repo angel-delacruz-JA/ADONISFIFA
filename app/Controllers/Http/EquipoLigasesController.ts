@@ -1,6 +1,6 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import EquipoLigas from "App/Models/EquipoLigas";
-export default class EquipoLigasesController 
+export default class EquipoLigasesController
 {
     public async store({auth,request,response})
     {

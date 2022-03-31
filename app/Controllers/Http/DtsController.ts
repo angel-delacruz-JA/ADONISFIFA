@@ -1,7 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from "@ioc:Adonis/Lucid/Database";
 import Dt from "App/Models/Dt";
-export default class DtsController 
+export default class DtsController
 {
     public async store({auth,request,response})
     {

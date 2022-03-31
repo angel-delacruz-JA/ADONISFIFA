@@ -2,7 +2,7 @@
 import Database from "@ioc:Adonis/Lucid/Database"
 import Equipo from "App/Models/Equipo"
 import Jugadore from "App/Models/Jugadore"
-export default class JugadoresController 
+export default class JugadoresController
 {
     public async store({auth,request,response})
     {

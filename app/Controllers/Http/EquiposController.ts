@@ -1,7 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Equipo from "App/Models/Equipo";
 import Database from "@ioc:Adonis/Lucid/Database";
-export default class EquiposController 
+export default class EquiposController
 {
     public async store({auth,request,response})
     {
