@@ -1,7 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from "@ioc:Adonis/Lucid/Database";
 import Federacion from "App/Models/Federacion";
-export default class FederacionsController 
+export default class FederacionsController
 {
     public async store({auth,request,response})
     {

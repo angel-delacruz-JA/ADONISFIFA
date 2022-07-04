@@ -1,7 +1,7 @@
 // import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from "@ioc:Adonis/Lucid/Database";
 import Ligas from "App/Models/Ligas";
-export default class LigasesController 
+export default class LigasesController
 {
     public async crearliga({auth,request,response})
     {
@@ -45,7 +45,7 @@ export default class LigasesController
     }
     public async ligasinfo()
     {
-        const ligas= 
+        const ligas=
         Database.query()
         .from('ligas')
         .join('federacion','ligas.Federacion_id','=','federacion.id')
